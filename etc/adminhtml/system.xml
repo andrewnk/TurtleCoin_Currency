@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="turtlecoin" translate="label" sortOrder="999998">
+            <label>TurtleCoin</label>
+        </tab>
+        <section id="turtlecoin" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Currency</label>
+            <tab>turtlecoin</tab>
+            <resource>TurtleCoin_Currency::config</resource>
+            <group id="currency" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Currency Exchange</label>
+                <comment>
+                    This section is only required if you are using a base currency other than TurtleCoin
+                </comment>
+                <field id="apikey" translate="label comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Key</label>
+                    <comment>
+                        <![CDATA[CoinMarketCap requires an API key to access coin data. Sign up for an account (it's free) and request an API key here: <a href="https://pro.coinmarketcap.com/" target="_blank">https://pro.coinmarketcap.com/</a>]]>
+                    </comment>
+                </field>
+                <field id="apitest" translate="label comment" type="button" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>TurtleCoin\Currency\Block\Adminhtml\System\Config\ApiTest</frontend_model>
+                    <label>Test API</label>
+                    <comment>
+                        Test the api with your key. Please note, this request will count towards your daily/monthly credits.
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

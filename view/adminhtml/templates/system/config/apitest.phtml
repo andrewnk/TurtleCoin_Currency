@@ -1,0 +1,61 @@
+<?php /* @var $block \TurtleCoin\Currency\Block\System\Config\ApiTest */ ?>
+
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function(jQuery){
+
+        var statusContainer = jQuery('#status-container');
+        var responseContainer = jQuery('#response-container');
+        responseContainer.closest('pre').hide();
+
+        jQuery('#apitest_button').click(function () {
+            new Ajax.Request('<?php echo $block->getAjaxUrl(); ?>', {
+                method: 'get',
+                loaderArea: false,
+                asynchronous: true,
+                onCreate: function() {
+                    statusContainer.find('#success, #failed, #status-response').hide();
+                    statusContainer.find('#processing').show();
+                    responseContainer.closest('pre').hide();
+                    responseContainer.text('');
+                },
+                onSuccess: function(response) {
+                    statusContainer.find('#processing').hide();
+
+                    var resultText = 'Failed';
+                    var responseText = 'There was a problem querying the API. Please check the logs for more information';
+                    var responseJSON = response.responseJSON;
+                    if (response.status === 200 && responseJSON.success) {
+                        resultText = 'Success';
+                        statusContainer.find('#success').show();
+
+                        if (typeof responseJSON !== 'undefined') {
+                            responseText = JSON.stringify(responseJSON.data.data, null, 2);
+                        }
+                    } else {
+                        statusContainer.find('#failed').show();
+                    }
+
+                    statusContainer.find('#status-response').text(resultText).show();
+                    responseContainer.text(responseText);
+                    responseContainer.closest('pre').show();
+                }
+            });
+        });
+
+    });
+</script>
+
+<?php echo $block->getButtonHtml() ?>
+
+<span id="status-container">
+    <img id="processing" hidden="hidden" alt="Processing" style="margin:0 5px" src="<?php echo $block->getViewFileUrl('images/ajax-loader-small.gif') ?>"/>
+    <img id="success" hidden="hidden" alt="Testing Successful" style="margin:-3px 5px" src="<?php echo $block->getViewFileUrl('images/rule_component_apply.gif') ?>"/>
+    <img id="failed" hidden="hidden" alt="Test Failed" style="margin:-3px 5px" src="<?php echo $block->getViewFileUrl('images/rule_component_remove.gif') ?>"/>
+    <span id="status-response"></span>
+</span>
+<pre>
+    <code id="response-container"></code>
+</pre>
