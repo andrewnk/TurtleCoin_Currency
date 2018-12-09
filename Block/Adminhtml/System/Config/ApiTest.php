@@ -46,7 +46,7 @@ class ApiTest extends Field
     }
 
     /**
-     * Return ajax url
+     * Return route url to our apitest controller method
      *
      * @return string
      */

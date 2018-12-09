@@ -55,18 +55,9 @@ class ApiTest extends Action
     public function execute()
     {
         $result = $this->resultJsonFactory->create();
-        $success = false;
-        $response = null;
-
-        try {
-            $coinMarketCapModel = $this->coinMarketCap->create();
-            if($response = $coinMarketCapModel->getExchangeData()) {
-                $success = true;
-            }
-
-        } catch (\Exception $e) {
-            $this->logger->critical($e);
-        }
+        $coinMarketCapModel = $this->coinMarketCap->create();
+        $response = $coinMarketCapModel->getExchangeData();
+        $success = $response ? true : false;
 
         return $result->setData(['success' => $success, 'data' => $response]);
     }

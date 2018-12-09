@@ -10,12 +10,14 @@ php bin/magento setup:upgrade
 ```
 
 Using:
+
 You have the option to use TurtleCoin as your Base Currency (the default currency you would use to price your products) or as an additional Allowed Currency (the customer will be able to switch between currencies on the frontend). Navigate to ```Stores > General > Currency Setup``` to make the necessary changes.
 
-If you are going to use TurtleCoin as an Additional Currency you will first need to set up an account (the free option is enough) at [CoinMarketCap](https://pro.coinmarketcap.com/) and get an API Key. Once you have your key navigate to ```Stores > TurtleCoin > Currency```, enter in the API Key and save. You may test your key by pressing the ```Test API``` button. If the test request fails, check your exception.log for details.
+If you are going to use TurtleCoin as an Additional Currency you will first need to set up an account (the free option is enough) at [CoinMarketCap](https://pro.coinmarketcap.com/) and get an API Key. Once you have your key navigate to ```Stores > TurtleCoin > Currency```, enter in the API Key and save. You may test your key by pressing the ```Test API``` button. If the test request fails, check your exception.log or system.log for details. Once your API key is saved a cron job will run every 5 minutes, pull the exchange rate from the CoinMarketCap API, and save it in the database.
 
 Notes:
-Use composer to install this module, because without proper autoload configuration this module won't work
+
+Use composer to install this module, because without a proper autoload configuration this module won't work
 
 This module modifies the core table ```directory_currency_rate```. It extends the column length  for *currency_from* and *currency_to* from 3 to 4 to allow us to have four character currencies like *TRTL*
 

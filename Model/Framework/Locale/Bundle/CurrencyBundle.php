@@ -17,7 +17,7 @@ class CurrencyBundle extends DataBundle
     protected function createResourceBundle($locale, $path)
     {
         try {
-            $overrideArray = array("en");
+            $overrideArray = ['en'];
             $bundle = new \ResourceBundle($locale, $path);
 
             if (in_array($locale, $overrideArray)) {
