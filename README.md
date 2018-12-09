@@ -13,7 +13,7 @@ Using:
 
 You have the option to use TurtleCoin as your Base Currency (the default currency you would use to price your products) or as an additional Allowed Currency (the customer will be able to switch between currencies on the frontend). Navigate to ```Stores > Configuration > General > Currency Setup``` to make the necessary changes.
 
-If you are going to use TurtleCoin as an Additional Currency you will first need to set up an account (the free option is enough) at [CoinMarketCap](https://pro.coinmarketcap.com/) and get an API Key. Once you have your key navigate to ```Stores > TurtleCoin > Currency```, enter in the API Key and save. You may test your key by pressing the ```Test API``` button. If the test request fails, check your exception.log or system.log for details. Once your API key is saved a cron job will run every 5 minutes, pull the exchange rate from the CoinMarketCap API, and save it in the database.
+If you are going to use TurtleCoin as an Additional Currency you will first need to set up an account (the free option is enough) at [CoinMarketCap](https://pro.coinmarketcap.com/) and get an API Key. Once you have your key navigate to ```Stores > Configuration > TurtleCoin > Currency```, enter in the API Key and save. You may test your key by pressing the ```Test API``` button. If the test request fails, check your exception.log or system.log for details. Once your API key is saved a cron job will run every 5 minutes, pull the exchange rate from the CoinMarketCap API, and save it in the database.
 
 Notes:
 
