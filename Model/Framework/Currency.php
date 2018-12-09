@@ -8,8 +8,8 @@ class Currency extends \Magento\Framework\Currency
 {
     /**
      * @param CacheInterface $appCache
-     * @param $options
-     * @param $locale
+     * @param string $options OPTIONAL
+     * @param string $locale OPTIONAL
      */
     public function __construct(CacheInterface $appCache, $options = null, $locale = null)
     {
